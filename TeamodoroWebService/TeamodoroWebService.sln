@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teamodoro.WebService", "TeamodoroWebService\Teamodoro.WebService.csproj", "{111C185C-DD80-4686-B3EC-85B953D889FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teamodoro.Persistence", "Teamodoro.Persistence\Teamodoro.Persistence.csproj", "{C2E11A79-B396-4B27-B6E6-49C4C5708660}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teamodoro.WebService.Tests", "Teamodoro.WebServiceTests\Teamodoro.WebService.Tests.csproj", "{E8F829EA-183A-4C65-A62E-01CD960598AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{111C185C-DD80-4686-B3EC-85B953D889FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{111C185C-DD80-4686-B3EC-85B953D889FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{111C185C-DD80-4686-B3EC-85B953D889FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{111C185C-DD80-4686-B3EC-85B953D889FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2E11A79-B396-4B27-B6E6-49C4C5708660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2E11A79-B396-4B27-B6E6-49C4C5708660}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2E11A79-B396-4B27-B6E6-49C4C5708660}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2E11A79-B396-4B27-B6E6-49C4C5708660}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8F829EA-183A-4C65-A62E-01CD960598AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8F829EA-183A-4C65-A62E-01CD960598AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8F829EA-183A-4C65-A62E-01CD960598AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8F829EA-183A-4C65-A62E-01CD960598AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
