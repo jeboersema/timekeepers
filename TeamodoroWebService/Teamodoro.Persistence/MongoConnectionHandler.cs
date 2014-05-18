@@ -12,10 +12,8 @@ namespace Teamodoro.Persistence
     {
         public MongoCollection<T> MongoCollection { get; private set; }
 
-        public MongoConnectionHandler()
+        public MongoConnectionHandler(string connectionString, string databaseName)
         {
-            const string connectionString = "mongodb://localhost";
-
             //// Get a thread-safe client object by using a connection string
             var mongoClient = new MongoClient(connectionString);
 
@@ -24,7 +22,6 @@ namespace Teamodoro.Persistence
 
             //// Get a reference to the database object 
             //// from the Mongo server object
-            const string databaseName = "teamodoro";
             var db = mongoServer.GetDatabase(databaseName);
 
             //// Get a reference to the collection object from the Mongo database object

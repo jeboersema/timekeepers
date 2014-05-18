@@ -41,7 +41,14 @@ namespace Teamodoro.Persistence.Services
 
         protected EntityService()
         {
-            MongoConnectionHandler = new MongoConnectionHandler<T>();
+            const string connectionString = "mongodb://localhost";
+            const string databaseName = "teamodoro";
+            MongoConnectionHandler = new MongoConnectionHandler<T>(connectionString, databaseName);
+        }
+
+        protected EntityService(string connectionString, string databaseName)
+        {
+            MongoConnectionHandler = new MongoConnectionHandler<T>(connectionString, databaseName);
         }
 
         public virtual T GetById(string id)
