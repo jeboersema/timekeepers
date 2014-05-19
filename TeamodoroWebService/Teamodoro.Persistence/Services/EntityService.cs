@@ -1,7 +1,9 @@
-﻿using MongoDB.Bson;
+﻿using System.Collections.Generic;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using Teamodoro.Persistence.Entities;
+using System.Linq;
 
 namespace Teamodoro.Persistence.Services
 {
@@ -39,6 +41,11 @@ namespace Teamodoro.Persistence.Services
             }
         }
 
+        public virtual long Count()
+        {
+            return MongoConnectionHandler.MongoCollection.Count();
+        }
+
         protected EntityService()
         {
             const string connectionString = "mongodb://localhost";
@@ -55,6 +62,11 @@ namespace Teamodoro.Persistence.Services
         {
             var entityQuery = Query<T>.EQ(e => e.Id, new ObjectId(id));
             return this.MongoConnectionHandler.MongoCollection.FindOne(entityQuery);
+        }
+
+        public List<T> GetAll()
+        {
+            return MongoConnectionHandler.MongoCollection.FindAll().ToList();
         }
 
         public abstract void Update(T entity);

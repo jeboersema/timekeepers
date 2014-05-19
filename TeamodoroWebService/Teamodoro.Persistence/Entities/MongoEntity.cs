@@ -7,5 +7,10 @@ namespace Teamodoro.Persistence.Entities
     {
         [BsonId]
         public ObjectId Id { get; set; }
+
+        public string GetIdAsString()
+        {
+            return Id.ToString();
+        }
     }
 }

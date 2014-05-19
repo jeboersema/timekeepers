@@ -16,6 +16,6 @@ namespace Teamodoro.Persistence.Entities
         public string AuthenticationType { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
-        public List<ObjectId> TeamIds { get; set; }
+        public List<string> TeamIds { get; set; }
     }
 }
