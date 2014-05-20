@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using System;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using Teamodoro.Persistence.Entities;
@@ -12,7 +13,7 @@ namespace Teamodoro.Persistence.Services
         public virtual void Create(T entity)
         {
             //// Save the entity with safe mode (WriteConcern.Acknowledged)
-            var result = this.MongoConnectionHandler.MongoCollection.Save(
+            var result = MongoConnectionHandler.MongoCollection.Save(
                 entity,
                 new MongoInsertOptions
                 {
@@ -22,12 +23,13 @@ namespace Teamodoro.Persistence.Services
             if (!result.Ok)
             {
                 //// Something went wrong
+                throw new Exception(string.Format("Unable to create {0} due to the following problem: {1}", GetType().Name, result.ErrorMessage));
             }
         }
 
         public virtual void Delete(string id)
         {
-            var result = this.MongoConnectionHandler.MongoCollection.Remove(
+            var result = MongoConnectionHandler.MongoCollection.Remove(
                 Query<T>.EQ(e => e.Id,
                 new ObjectId(id)),
                 RemoveFlags.None,
@@ -36,6 +38,7 @@ namespace Teamodoro.Persistence.Services
             if (!result.Ok)
             {
                 //// Something went wrong
+                throw new Exception(string.Format("Unable to delete {0} due to the following problem: {1}", GetType().Name, result.ErrorMessage));
             }
         }
 
@@ -54,7 +57,7 @@ namespace Teamodoro.Persistence.Services
         public virtual T GetById(string id)
         {
             var entityQuery = Query<T>.EQ(e => e.Id, new ObjectId(id));
-            return this.MongoConnectionHandler.MongoCollection.FindOne(entityQuery);
+            return MongoConnectionHandler.MongoCollection.FindOne(entityQuery);
         }
 
         public abstract void Update(T entity);

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MongoDB.Bson;
 using NUnit.Framework;
 using Teamodoro.Persistence.Entities;
 using Teamodoro.Persistence.Services;
@@ -11,20 +9,32 @@ namespace Teamodoro.WebServiceTests
 {
     public class PersistenceTests
     {
-        private UserService userDbService;
-        private const string connectionString = "mongodb://localhost";
-        private const string database = "testDb";
+        private UserService _userDbService;
+        private const string ConnectionString = "mongodb://localhost";
+        private const string Database = "testDb";
 
         [SetUp]
         public void UserTestPreparation()
         {
-            userDbService = new UserService(connectionString,database);
+            _userDbService = new UserService(ConnectionString, Database);
         }
 
         [Test]
         public void CanCreateUser()
         {
-            userDbService.Create();
+            var user = new User
+            {
+                AuthenticationType = "basic",
+                Email = "me@you.com",
+                FullName = "Me You",
+                Id = new ObjectId(Guid.NewGuid().ToString()),
+                SecurityKey = "MyPassword",
+                TeamIds = new List<ObjectId>(),
+                Username = "Me"
+            };
+            
+            _userDbService.Create(user);
+            
         }
 
         

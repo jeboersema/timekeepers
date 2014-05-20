@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using Teamodoro.Persistence.Entities;
@@ -32,6 +28,7 @@ namespace Teamodoro.Persistence.Services
             if (updateResult.DocumentsAffected == 0)
             {
                 //oops
+                throw new Exception(string.Format("Unable to update {0} due to the following problem: {1}", GetType().Name, updateResult.ErrorMessage));
             }
         }
     }
