@@ -4,7 +4,7 @@ namespace Teamodoro.Persistence.Entities
 {
     public class Team : MongoEntity
     {
-        public ObjectId TeamOwnerId { get; set; }
+        public string TeamOwnerId { get; set; }
         public string Name { get; set; }
         public string Company { get; set; }
         public bool IsPublic { get; set; }
